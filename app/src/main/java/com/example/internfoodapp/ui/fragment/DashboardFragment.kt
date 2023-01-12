@@ -26,7 +26,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     lateinit var viewModel: FoodViewModel
     lateinit var dashboardAdapter:DashboardFragmentAdapter
 
-//    var restaurantList :MutableLiveData<List<Restaurant>> = MutableLiveData()
     var restaurantList :List<Restaurant> = listOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,8 +55,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                 is Resource.Success ->{
                     hideProgressBar()
                     response.data?.let { foodResponse ->
-//                        newsAdapter.differ.submitList(newsResponse.articles)
-//                        restaurantList.postValue(foodResponse.data.data)
                         restaurantList = foodResponse.data.data
                         dashboardAdapter = DashboardFragmentAdapter(activity as Context, foodResponse.data.data)
                         recyclerViewDashboard.adapter = dashboardAdapter
@@ -111,12 +108,4 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         paginationProgressBar.visibility = View.VISIBLE
     }
 
-
-//    private fun setupRecyclerView(){
-//        newsAdapter = NewsAdapter()
-//        rvBreakingNews.apply {
-//            adapter = newsAdapter
-//            layoutManager = LinearLayoutManager(activity)
-//        }
-//    }
 }

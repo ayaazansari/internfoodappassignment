@@ -48,14 +48,6 @@ class DashboardFragmentAdapter(val context: Context, var itemList: List<Restaura
         Picasso.get().load(restaurant.image_url).error(R.drawable.ic_default_image_restaurant)
             .into(holder.imgRestaurant)
 
-        //Adding and removing from favourites using database
-
-//        holder.llContent.setOnClickListener {
-//            val intent = Intent(context, Restaurant::class.java)
-//            intent.putExtra("restaurantId", holder.txtRestaurantName.tag.toString())
-//            intent.putExtra("restaurantName", holder.txtRestaurantName.text.toString())
-//            context.startActivity(intent)
-//        }
     }
 
     fun filterList(filteredList: ArrayList<Restaurant>) {

@@ -2,25 +2,19 @@ package com.example.internfoodapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
 import com.example.internfoodapp.R
-import com.example.internfoodapp.repository.FoodRepository
+import com.example.internfoodapp.ui.fragment.DashboardFragment
 
 class FoodActivity : AppCompatActivity() {
-    lateinit var viewModel: FoodViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food)
+        val dashboardFragment = DashboardFragment()
 
-        val foodRepository = FoodRepository()
-        val viewModelProviderFactory = FoodViewModelProviderFactory(foodRepository)
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,dashboardFragment)
+            commit()
 
-        viewModel = ViewModelProvider(this,viewModelProviderFactory).get(FoodViewModel::class.java)
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.foodNavHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
+        }
     }
 }
